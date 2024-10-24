@@ -961,7 +961,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 69.63067
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -987,8 +987,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.13201155, y: 0.7865305, z: -0.23441344, w: -0.5558714}
-  m_LocalPosition: {x: 18.823433, y: 6.0979996, z: -27.320602}
+  m_LocalRotation: {x: 0.22488788, y: -0.30231234, z: 0.07362856, w: 0.9233697}
+  m_LocalPosition: {x: 20.47, y: 7.35, z: -34.510002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4901,7 +4901,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1423194294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4976,10 +4976,10 @@ MonoBehaviour:
     ScreenPosition: {x: -0.09, y: 0.18}
     DeadZone:
       Enabled: 0
-      Size: {x: 0.07708345, y: 0.07962957}
+      Size: {x: 0.009375153, y: 0.07962957}
     HardLimits:
       Enabled: 1
-      Size: {x: 0.07708345, y: 0.07962957}
+      Size: {x: 0.009375153, y: 0.07962957}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
   TargetOffset: {x: 0.03, y: 0, z: 0}

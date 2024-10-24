@@ -51,6 +51,7 @@ public class CameraSwitcher : MonoBehaviour
             ePressed = false;
             interactionCamera.gameObject.SetActive(false);
             defaultCamera.gameObject.SetActive(true);
+            eSign.gameObject.SetActive(false);
         }
 
         Debug.Log("Trigger Left");
