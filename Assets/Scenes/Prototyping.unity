@@ -233,6 +233,7 @@ MonoBehaviour:
   _speed: 5
   _rotationSpeed: 165
   characterController: {fileID: 1003927362}
+  jumpSpeed: 250
 --- !u!1001 &28823046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2032,6 +2033,7 @@ MonoBehaviour:
   _speed: 5
   _rotationSpeed: 165
   characterController: {fileID: 501859516}
+  jumpSpeed: 3
 --- !u!143 &501859516
 CharacterController:
   m_ObjectHideFlags: 0

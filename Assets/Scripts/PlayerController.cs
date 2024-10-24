@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using Unity.Cinemachine;
 using UnityEditor.Callbacks;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _rotationSpeed; 
 
     [SerializeField] private CharacterController characterController;
+    [SerializeField] private float jumpSpeed = 5f;
+    private float ySpeed;
     
     void Start() {
     }
@@ -23,6 +26,10 @@ public class PlayerController : MonoBehaviour
         //GatherInput();
         // Look();
         Move();
+        ySpeed += Physics.gravity.y * Time.deltaTime;
+        if(Input.GetButtonDown("Jump")) {
+            ySpeed = jumpSpeed;
+        }
     }
 
     void Move() {
@@ -36,13 +43,23 @@ public class PlayerController : MonoBehaviour
         movementDirection.Normalize();
 
         //transform.Translate(movementDirection * _speed * Time.deltaTime, Space.World);
-        characterController.SimpleMove(movementDirection * magnitude);
+        Vector3 velocity = movementDirection * magnitude;
+        velocity.y = ySpeed;
+        characterController.Move(velocity * Time.deltaTime);
 
         if(movementDirection != Vector3.zero) {
             //transform.forward = movementDirection; 
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, _rotationSpeed * Time.deltaTime);
+        }
+
+    
+    }
+
+    private void OnJump() {
+        if(Input.GetButtonDown("Jump")) {
+            ySpeed = jumpSpeed;
         }
     }
 }
