@@ -12,10 +12,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CharacterController characterController;
     
     void Start() {
-        //Code about starting position
     }
     void FixedUpdate() {
         Move();
+        //Different code, make it so that the player movement isnt dependent on the axis
+
     }
     
     void Update() {
@@ -28,7 +29,9 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
+        // Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
+        Vector3 movementDirection = transform.forward * verticalInput + transform.right * horizontalInput;
+
         float magnitude = Mathf.Clamp01(movementDirection.magnitude) * _speed;
         movementDirection.Normalize();
 
