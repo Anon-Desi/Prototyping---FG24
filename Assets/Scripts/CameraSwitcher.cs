@@ -1,12 +1,11 @@
-using TMPro;
 using Unity.Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class NPC : MonoBehaviour
+public class CameraSwitcher : MonoBehaviour
 {
     [SerializeField] CinemachineCamera defaultCamera;
     [SerializeField] CinemachineCamera interactionCamera;
+    [SerializeField] CinemachineCamera startingCamera;
     [SerializeField] GameObject eSign;
 
     private bool ePressed = false;
@@ -14,6 +13,8 @@ public class NPC : MonoBehaviour
 
     private void Start() {
         interactionCamera.gameObject.SetActive(false);
+        startingCamera.gameObject.SetActive(true);
+        defaultCamera.gameObject.SetActive(false);
         eSign.gameObject.SetActive(false);
     }
 
@@ -38,11 +39,20 @@ public class NPC : MonoBehaviour
             Debug.Log("Granny found");
             canInteract = true;
         }
+        if(this.gameObject.name == "First Threshold") {
+            startingCamera.gameObject.SetActive(false);
+            defaultCamera.gameObject.SetActive(true);
+        }
     }
 
     private void OnTriggerExit(Collider other) {
-        canInteract = false;
-        ePressed = false;
+        if(this.gameObject.name == "NPC Granny") {
+            canInteract = false;
+            ePressed = false;
+            interactionCamera.gameObject.SetActive(false);
+            defaultCamera.gameObject.SetActive(true);
+        }
+
         Debug.Log("Trigger Left");
     }
 }

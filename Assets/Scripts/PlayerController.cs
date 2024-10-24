@@ -24,17 +24,6 @@ public class PlayerController : MonoBehaviour
         Move();
     }
 
-    // void GatherInput() {
-    //     _playerInput = new Vector3(Input.GetAxisRaw("Horizontal"),0,Input.GetAxisRaw("Vertical"));
-    // }
-
-    // void Look() {
-    //     var relative = (transform.position + _playerInput) - transform.position;
-    //     var rot = Quaternion.LookRotation(relative);
-
-    //     transform.rotation = rot;
-    // }
-
     void Move() {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
