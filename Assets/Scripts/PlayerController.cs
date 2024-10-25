@@ -1,8 +1,6 @@
-using System.Runtime.CompilerServices;
-using Unity.Cinemachine;
-using UnityEditor.Callbacks;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpSpeed = 5f;
     public Vector3 movementDirection;
     private float ySpeed;
+    private bool isGrounded = false;
     
     void Start() {
     }
@@ -22,13 +21,21 @@ public class PlayerController : MonoBehaviour
         //Different code, make it so that the player movement isnt dependent on the axis
 
     }
+    private void OnCollisionStay(Collision other) {
+        if(other.gameObject.tag == "Ground") {
+            isGrounded = true;
+        }
+    }
+    private void OnCollisionExit(Collision other) {
+        isGrounded = false;
+    }
     
     void Update() {
         //GatherInput();
         // Look();
         Move();
         ySpeed += Physics.gravity.y * Time.deltaTime;
-        if(Input.GetButtonDown("Jump")) {
+        if(Input.GetButtonDown("Jump") && isGrounded) {
             //Jump animation
             ySpeed = jumpSpeed;
         }
