@@ -21,11 +21,11 @@ public class CameraSwitcher : MonoBehaviour
     private void Update() {
         if (canInteract && Input.GetKeyUp(KeyCode.E)) {
             ePressed = true;
-            Debug.Log("E pressed");
+            //Debug.Log("E pressed");
             
             
             if (ePressed) {
-                Debug.Log("Interaction triggered");
+                //Debug.Log("Interaction triggered");
                 eSign.gameObject.SetActive(false);
                 interactionCamera.gameObject.SetActive(true);
                 defaultCamera.gameObject.SetActive(false);
@@ -36,7 +36,7 @@ public class CameraSwitcher : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (this.gameObject.name == "NPC Granny") {
             eSign.gameObject.SetActive(true);
-            Debug.Log("Granny found");
+            //Debug.Log("Granny found");
             canInteract = true;
         }
         if(this.gameObject.name == "First Threshold") {
@@ -54,6 +54,6 @@ public class CameraSwitcher : MonoBehaviour
             eSign.gameObject.SetActive(false);
         }
 
-        Debug.Log("Trigger Left");
+        //Debug.Log("Trigger Left");
     }
 }

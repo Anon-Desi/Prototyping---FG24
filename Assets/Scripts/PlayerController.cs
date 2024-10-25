@@ -10,14 +10,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _speed = 5f;
     [SerializeField] private float _rotationSpeed; 
 
-    [SerializeField] private CharacterController characterController;
+    [SerializeField] public CharacterController characterController;
     [SerializeField] private float jumpSpeed = 5f;
+    public Vector3 movementDirection;
     private float ySpeed;
     
     void Start() {
     }
     void FixedUpdate() {
-        Move();
+        //Move();
         //Different code, make it so that the player movement isnt dependent on the axis
 
     }
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
         Move();
         ySpeed += Physics.gravity.y * Time.deltaTime;
         if(Input.GetButtonDown("Jump")) {
+            //Jump animation
             ySpeed = jumpSpeed;
         }
     }
@@ -37,7 +39,7 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         // Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
-        Vector3 movementDirection = transform.forward * verticalInput + transform.right * horizontalInput;
+        movementDirection = transform.forward * verticalInput + transform.right * horizontalInput;
 
         float magnitude = Mathf.Clamp01(movementDirection.magnitude) * _speed;
         movementDirection.Normalize();
